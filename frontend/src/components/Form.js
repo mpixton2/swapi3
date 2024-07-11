@@ -1,5 +1,7 @@
 // TODO: Use bootstrap to style this form
 
+import { useState } from "react";
+
 const homeWorlds = [
     "Tatooine",
     "Alderaan",
@@ -46,13 +48,41 @@ const homeWorlds = [
 ];
 
 const Form = () => {
+    const [homeWorld, setHomeWorld] = useState('');
+    const [unitType, setUnitType] = useState('stormtrooper');
+
+    const handleWorldChange = (event) => {
+        setHomeWorld(event.target.value);
+    };
+
+    const handleUnitChange = (event) => {
+        setUnitType(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Homeworld selected: ", homeWorld);
+        console.log("Unit type selected: ", unitType);
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label for="homeworld">Homeworld </label>
-            <input name="homeworld"></input> <br></br>
+            <input 
+                type="text"
+                name="homeworld"
+                value={homeWorld}
+                onChange={handleWorldChange}
+            >
+            </input> 
+            <br></br>
 
             <label for="unit-type">Unit Type </label> 
-            <select name="unit-type">
+            <select 
+                name="unit-type"
+                value={unitType}
+                onChange={handleUnitChange}
+            >
                 <option value="stormtrooper">Stormtrooper</option>
                 <option value="tie_fighter">TIE Fighter</option>
                 <option value="at-st">AT-ST</option>
@@ -61,7 +91,8 @@ const Form = () => {
                 <option value="at-at">AT-AT</option>
                 <option value="tie_silencer">TIE Silencer</option>
                 <option value="unknown">Unknown</option>
-            </select> <br></br>
+            </select>
+            <br></br>
 
             <input type="submit"></input>
         </form>
