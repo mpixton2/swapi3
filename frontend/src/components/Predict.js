@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const PORT_NUMBER = 5000;
 const END_POINT = `http://localhost:${PORT_NUMBER}/`;
@@ -17,23 +17,25 @@ const FetchResults = async (body, setData) => {
             throw new Error(`Response status: ${response.status}`);
 
         const json = await response.json();
-        setData(json);
+        setData(JSON.stringify(json));
     } catch (e) {
         console.error("Error fetching from FetchResults: ", e);
     }
 };
 
-const Predict = () => {
+const Predict = (props) => {
+    const [data, setData] = useState('');
 
-    const [data, setData] = useState({});
+    const body = {
+        "homeworld": props.homeWorld,
+        "unit_type": props.unitType,
+    };
 
-    // TODO: Create a Form component to generate a user-defined body 
-    const body = {};
     FetchResults(body, setData)
 
     return (
         <>
-            data
+        {data}
         </>
     )
 };

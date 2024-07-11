@@ -1,6 +1,9 @@
 // TODO: Use bootstrap to style this form
 
 import { useState } from "react";
+import {
+    useNavigate
+} from "react-router-dom";
 
 const homeWorlds = [
     "Tatooine",
@@ -47,31 +50,27 @@ const homeWorlds = [
     "Umbara"
 ];
 
-const Form = () => {
-    const [homeWorld, setHomeWorld] = useState('');
-    const [unitType, setUnitType] = useState('stormtrooper');
+const Form = (props) => {
+    // TODO: Delete these states once they work
+    // const [homeWorld, setHomeWorld] = useState('');
+    // const [unitType, setUnitType] = useState('stormtrooper');
+    const navigate = useNavigate();
 
     const handleWorldChange = (event) => {
-        setHomeWorld(event.target.value);
+        props.setHomeWorld(event.target.value);
     };
 
     const handleUnitChange = (event) => {
-        setUnitType(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log("Homeworld selected: ", homeWorld);
-        console.log("Unit type selected: ", unitType);
+        props.setUnitType(event.target.value);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={() => navigate('/predict')}>
             <label for="homeworld">Homeworld </label>
             <input 
                 type="text"
                 name="homeworld"
-                value={homeWorld}
+                value={props.homeWorld}
                 onChange={handleWorldChange}
             >
             </input> 
@@ -80,7 +79,7 @@ const Form = () => {
             <label for="unit-type">Unit Type </label> 
             <select 
                 name="unit-type"
-                value={unitType}
+                value={props.unitType}
                 onChange={handleUnitChange}
             >
                 <option value="stormtrooper">Stormtrooper</option>
