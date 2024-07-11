@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 import pandas as pd
 import json
 import pickle
@@ -45,12 +46,15 @@ with open('../trained_model.pkl', 'rb') as file:
 
 # Instantiate Flask application
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def index():
     return jsonify({})
 
 @app.route('/api/predict', methods=['POST'])
+@cross_origin()
 def predict():
     # Get the request data
     data = request.get_json(force=True)
