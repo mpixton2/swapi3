@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import DisplayAllegiance from "./DisplayAllegiance";
 
 const PORT_NUMBER = 5000;
 const END_POINT = `http://localhost:${PORT_NUMBER}/`;
@@ -34,9 +35,9 @@ const Predict = (props) => {
     FetchResults(body, setData)
 
     return (
-        <>
-        {data}
-        </>
+        <div className="d-inline-flex flex-column justify-content-center">
+            <DisplayAllegiance data={data} />
+        </div>
     )
 };
 
