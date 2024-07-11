@@ -13,24 +13,28 @@ function App() {
   const [unitType, setUnitType] = useState('stormtrooper');
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={
-          <Form 
-            homeWorld={homeWorld}
-            setHomeWorld={setHomeWorld}
-            unitType={unitType}
-            setUnitType={setUnitType}
-          />
-        } />
-        <Route path="/predict" element={
-          <Predict 
-            homeWorld={homeWorld}
-            unitType={unitType}
-          />
-        } />
-      </Routes>
-    </Router>
+    <div className="container">
+      <h1 className="display-1 text-center">Star Wars Model Prediction</h1>
+
+      <Router>
+        <Routes>
+          <Route path="/" element={
+            <Form
+              homeWorld={homeWorld}
+              setHomeWorld={setHomeWorld}
+              unitType={unitType}
+              setUnitType={setUnitType}
+            />
+          } />
+          <Route path="/predict" element={
+            <Predict
+              homeWorld={homeWorld}
+              unitType={unitType}
+            />
+          } />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

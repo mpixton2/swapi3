@@ -1,6 +1,3 @@
-// TODO: Use bootstrap to style this form
-
-import { useState } from "react";
 import {
     useNavigate
 } from "react-router-dom";
@@ -62,44 +59,42 @@ const Form = (props) => {
     };
 
     return (
-        <div className="container">
-            <form className="row g-3" onSubmit={() => navigate('/predict')}>
-                <div className="col-md-6">
-                    <label className="form-label" for="homeworld">Homeworld </label>
-                    <input 
-                        className="form-control"
-                        type="text"
-                        name="homeworld"
-                        value={props.homeWorld}
-                        onChange={handleWorldChange}
-                    >
-                    </input> 
-                </div>
-                <br></br>
+        <form className="row g-3" onSubmit={() => navigate('/predict')}>
+            <div className="col-md-6">
+                <label className="form-label" for="homeworld">Homeworld </label>
+                <input
+                    className="form-control"
+                    type="text"
+                    name="homeworld"
+                    value={props.homeWorld}
+                    onChange={handleWorldChange}
+                >
+                </input>
+            </div>
+            <br></br>
 
-                <div className="col-md-6">
-                    <label className="form-label" for="unit-type">Unit Type </label> 
-                    <select 
-                        className="form-control"
-                        name="unit-type"
-                        value={props.unitType}
-                        onChange={handleUnitChange}
-                    >
-                        <option value="stormtrooper">Stormtrooper</option>
-                        <option value="tie_fighter">TIE Fighter</option>
-                        <option value="at-st">AT-ST</option>
-                        <option value="x-wing">X-Wing</option>
-                        <option value="resistance_soldier">Resistance Soldier</option>
-                        <option value="at-at">AT-AT</option>
-                        <option value="tie_silencer">TIE Silencer</option>
-                        <option value="unknown">Unknown</option>
-                    </select>
-                </div>
-                <br></br>
+            <div className="col-md-6">
+                <label className="form-label" for="unit-type">Unit Type </label>
+                <select
+                    className="form-control"
+                    name="unit-type"
+                    value={props.unitType}
+                    onChange={handleUnitChange}
+                >
+                    <option value="stormtrooper">Stormtrooper</option>
+                    <option value="tie_fighter">TIE Fighter</option>
+                    <option value="at-st">AT-ST</option>
+                    <option value="x-wing">X-Wing</option>
+                    <option value="resistance_soldier">Resistance Soldier</option>
+                    <option value="at-at">AT-AT</option>
+                    <option value="tie_silencer">TIE Silencer</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+            <br></br>
 
-                <input type="submit"></input>
-            </form>
-        </div>
+            <input type="submit"></input>
+        </form>
     )
 }
 
