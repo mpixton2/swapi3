@@ -28,7 +28,7 @@ const Predict = () => {
     const [data, setData] = useState({});
 
     // TODO: Create a Form component to generate a user-defined body 
-
+    const body = {};
     FetchResults(body, setData)
 
     return (
